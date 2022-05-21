@@ -1,13 +1,11 @@
 import sys
 from os import getcwd
-from PyQt5 import QtWidgets, uic, QtCore,QtGui
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QAction, QTableWidget,QTableWidgetItem,QVBoxLayout,QSizePolicy,QPushButton
-from PyQt5.QtGui import QIcon,QFont
-import json
+from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtWidgets import QSizePolicy,QPushButton
+from PyQt5.QtGui import QFont
 from datetime import datetime
 import webbrowser
 import sqlite3
-from qt_material import apply_stylesheet
 from Net import infoToNariad
 import qtmodern.styles
 import qtmodern.windows
@@ -104,6 +102,9 @@ class nariadApp(QtWidgets.QDialog, nariad.Ui_Dialog):
             self.x.clear()
             self.y.clear()
             self.tempDataG.clear()
+        if(len(nomera)==0):
+            nariadWrite("Пусто",t,nomera,self.adsl)
+        
         webbrowser.open(t)    
     def SearchXY(self,data,spisokN):
         dataNsort = data
@@ -141,7 +142,7 @@ def nariadWrite(tempDataS,name,nomera,adsl):
             f.write(txt[2:] + (" +ADSL" if adsl.count(txt) else "" ) +"\n")
             #f.write(txt[2:] +"\n")
             f.write(" ".join(tempDataS[aa][0]).replace(tempDataS[aa][0][0],"")[1:] + "\n")
-
+        
         elif(a.rfind("СВЕРДЛОВСК")!= -1):
             f.write(a.replace("СВЕРДЛОВСК"," ")+ "\n")    
         elif(a[0:4]=="----"):

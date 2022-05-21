@@ -12,7 +12,7 @@ import qtmodern.styles
 import qtmodern.windows
 import sqlite3
 
-import root,info,find,nariad,nariadApp  # Это наш конвертированный файл дизайна
+import root,info,find,nariadApp  # Это наш конвертированный файл дизайна
 from Net import Sortirofka,infoN,infoP
 from Base import ReadBase,WriteAll_BaseSql,WriteMG_BaseSql
 path = getcwd()
@@ -252,7 +252,7 @@ class ExampleApp(QtWidgets.QMainWindow, root.Ui_MainWindow):
             for iz in range(len(x)):
                 col = y[iz]-x[iz]
                 for ss in range(col+1):
-                    if(dataN[x[iz]+ss][0:5] != "-    "):
+                    if(dataN[x[iz]+ss][0:2] != "- "):
                         tempData.append(dataN[x[iz]+ss].split())
                         tempDataS.append(tempData.copy())
                         tempData.clear()          
@@ -275,7 +275,7 @@ class ExampleApp(QtWidgets.QMainWindow, root.Ui_MainWindow):
             for iz in range(len(x)):
                 col = y[iz]-x[iz]
                 for ss in range(col+1):
-                    if(dataN[x[iz]+ss][0:5] != "-    "):
+                    if(dataN[x[iz]+ss][0:2] != "- "):
                         tempData.append(dataN[x[iz]+ss].split())
                         tempDataS.append(tempData.copy())
                         tempData.clear()
